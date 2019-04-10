@@ -59,10 +59,8 @@ function main() {
       }
     });
 
-
     // setTimeout(buildGameOverScreen, 3000);
   }
-
 
 
   function buildGameOverScreen() {
@@ -75,7 +73,6 @@ function main() {
     `);
 
     const restartButton = document.querySelector('.restart-button');
-
     restartButton.addEventListener('click', buildGameScreen);
   }
 
