@@ -23,14 +23,12 @@ Player.prototype.draw = function () {
 
 
 Player.prototype.update = function () {
-
-
+  this.y = this.y + this.direction * this.speed;
 }
 
 
-Player.prototype.setDirection = function () {
-
-
+Player.prototype.setDirection = function (newDirection) {
+  this.direction = newDirection;
 }
 
 
