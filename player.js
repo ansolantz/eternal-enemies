@@ -1,7 +1,7 @@
 console.log('player');
 
 function Player(canvas) {
-  this.lifes = 3;
+  this.lives = 3;
   this.size = 50;
   this.canvas = canvas;
   this.x = 50;
@@ -32,8 +32,9 @@ Player.prototype.setDirection = function (newDirection) {
 }
 
 
-Player.prototype.setLifes = function () {
-  this.lifes--;
+Player.prototype.setLives = function () {
+  this.lives--;
+  console.log(this.lives)
 }
 
 

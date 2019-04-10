@@ -44,6 +44,9 @@ function main() {
 
     const game = new Game(canvasElement);
     game.startLoop();
+    // game.setGameOverCallBack(buildGameOverScreen); //
+    game.setGameOver(buildGameOverScreen);
+
 
     document.addEventListener('keydown', function (event) {
       console.log(event.keyCode)
@@ -75,7 +78,6 @@ function main() {
     const restartButton = document.querySelector('.restart-button');
     restartButton.addEventListener('click', buildGameScreen);
   }
-
 
   buildSplashScreen();
 }

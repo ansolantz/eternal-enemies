@@ -6,6 +6,7 @@ function Game(canvas) {
   this.enemies = [];
   this.canvas = canvas;
   this.ctx = this.canvas.getContext('2d');
+  this.gameOver = false;
 };
 
 
@@ -30,7 +31,9 @@ Game.prototype.startLoop = function () {
 
     console.log(this.player.direction)
 
-    window.requestAnimationFrame(loop);
+    if (this.gameOver === false) {
+      window.requestAnimationFrame(loop);
+    }
   }
   window.requestAnimationFrame(loop);
 }
@@ -58,18 +61,25 @@ Game.prototype.drawCanvas = function () {
 
 Game.prototype.checkCollisions = function () {
 
-  this.enemies.forEach((enemy) => {
+  this.enemies.forEach((enemy, index) => {
     const isColliding = this.player.checkCollisionWithEnemy(enemy);
 
     if (isColliding) {
-      console.log('colision');
-
-      //this.player.setLifes();
+      // console.log('colision');
+      this.enemies.splice(index, 1);
+      this.player.setLives();
+      if (this.player.lives === 0) {
+        this.gameOver = true;
+        this.buildGameOverScreen();
+      }
+      // this.player.setLives();
     }
   });
-
-
   // this.player.CheckCollisionScreen();
   // this.player.CheckInScreen();
-
 }
+
+Game.prototype.setGameOver = function (buildGameOverScreen) {
+  this.buildGameOverScreen = buildGameOverScreen;
+}
+
